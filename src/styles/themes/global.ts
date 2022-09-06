@@ -8,6 +8,10 @@ export const GlobalStyle = createGlobalStyle`
     &:disabled {
         cursor: not-allowed;
     }
+
+    @media (max-width: 1125px) {
+        font-size: 87.5%;
+    }
 }
 
 :focus {

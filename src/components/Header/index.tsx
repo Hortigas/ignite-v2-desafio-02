@@ -9,7 +9,7 @@ export function Header() {
             <img src={logo} alt="" />
             <nav>
                 <ButtonLocationContainer href="#">
-                    <MapPin size="22" weight="fill" color={defaultTheme.purple} className="pinIcon" />
+                    <MapPin size="22" weight="fill" color={defaultTheme.purple} />
                     Belo Horizonte
                 </ButtonLocationContainer>
                 <ButtonCardContainer href="#">

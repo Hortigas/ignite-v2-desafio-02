@@ -4,7 +4,8 @@ export const HeaderContainer = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 2rem;
+    padding: 2rem 0;
+    gap: 0.75rem;
 
     nav {
         display: flex;
@@ -27,7 +28,7 @@ export const ButtonLocationContainer = styled(ButtonBaseContainer)`
     background: ${props => props.theme.purpleLight};
     color: ${props => props.theme.purpleDark};
 
-    .pinIcon {
+    & > svg {
         margin-right: 0.25rem;
     };
 `;

@@ -1,25 +1,38 @@
 import styled from "styled-components";
+import { ThemeType } from "../../@types/styled";
+
+interface BulletpointContainerProps {
+    backgroundColor: string;
+}
 
 export const HomeContainer = styled.main`
     display: flex;
+    align-items: center;
     flex-direction: row;
     padding: 5.75rem 0;
-    height:475px;
+    gap: 3.5rem;
 
     &>div {
         height: 100%;
-        margin-right: 3.5rem;
         display: flex;
         flex-direction: column;
         justify-content:space-between;
     }
 
     &>img {
-        height:360px;
+        max-height:360px;
+        max-width:476px;
+        width: 100%;
+    }
+
+    @media (max-width: 1125px) {
+        flex-direction: column;
     }
 `;
 
 export const TitleContainer = styled.div`
+    margin-bottom: 4rem;
+
     h1 {
         font-family: 'Baloo 2', cursive;
         font-size: 3rem;
@@ -36,6 +49,24 @@ export const TitleContainer = styled.div`
 `;
 
 export const AdvantagesContainer = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem 0;
 `;
 
-export const BulletpointContainer = styled.span``;
+export const BulletpointContainer = styled.span<BulletpointContainerProps>`
+    display: flex;
+    align-items: center;
+    font-size:1rem;
+    
+    & > svg {
+        margin-right: 0.75rem;
+        padding: 8px;
+        color: ${(props) => props.theme.white};
+        background-color: ${(props) => props.backgroundColor};
+        border-radius: 50%;
+        min-width:2rem;
+        min-height:2rem;
+    }
+
+`;
