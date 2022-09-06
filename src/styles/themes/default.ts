@@ -8,7 +8,7 @@ export const defaultTheme = {
     baseLabel: '#8d8686',
     baseText: '#574f4d',
     baseSubtitle: '#403937',
-    baseTitles: '#272221',
+    baseTitle: '#272221',
 
     yellow: '#dbac2c',
     yellowDark: '#c47f17',
