@@ -1,5 +1,12 @@
+import { AddressContainer, CartItensContainer, CheckoutContainer } from "./styles";
+
 export function Checkout() {
     return (
-        <h1>checkout</h1>
+        <CheckoutContainer>
+            <AddressContainer>
+            </AddressContainer>
+            <CartItensContainer>
+            </CartItensContainer>
+        </CheckoutContainer>
     );
 }

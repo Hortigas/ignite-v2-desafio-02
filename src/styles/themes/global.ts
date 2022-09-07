@@ -1,6 +1,13 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
+
+    :root {
+        --toastify-color-light: ${props => props.theme.baseCard};
+        --toastify-text-color-light: ${props => props.theme.baseText};
+        --toastify-font-family: 'Roboto';
+    }
+
     * {
         margin: 0;
         padding: 0;

@@ -36,6 +36,7 @@ export const LandingPageContainer = styled.div`
 
     @media (max-width: 1125px) {
         flex-direction: column;
+        padding: 1rem 0;
     }
 `;
 
@@ -49,6 +50,11 @@ export const TitleContainer = styled.div`
         line-height:130%;
         color: ${props => props.theme.baseTitle};
         margin-bottom: 1rem;
+
+        @media (max-width: 1125px) {
+            font-size: 3rem;
+            line-height:100%;
+        }
     }
 
     h2 {

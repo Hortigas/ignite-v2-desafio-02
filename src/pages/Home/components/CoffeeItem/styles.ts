@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const CoffeeListItemContainer = styled.div`
     width:256px;
+    margin: auto;
 
     display: flex;
     align-items: center;
@@ -77,8 +78,13 @@ export const CoffeeListItemContainer = styled.div`
             margin: 0 0.5rem 0 auto;
 
             &>svg {
-                padding: 0.75rem;
+                padding: 0.65rem;
                 color: ${props => props.theme.purple};
+
+                transition: color 0.1s;
+                &:hover {
+                    color: ${props => props.theme.purpleDark};
+                }
             }
 
             &>span {
@@ -92,6 +98,11 @@ export const CoffeeListItemContainer = styled.div`
             background: ${props => props.theme.purpleDark};
             padding: 0.5rem;
             border-radius: 8px;
+            
+            transition: background 0.1s;
+            &:hover {
+                background: ${props => props.theme.purple};
+            }
         }
     }
 `;
