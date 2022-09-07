@@ -7,10 +7,10 @@ import { Success } from "./pages/Success";
 export function Router() {
     return (
         <Routes>
-            <Route path="/" element={<DefaultLayout />}>
-                <Route path="/" element={<Home />} />
-                <Route path="/checkout" element={<Checkout />} />
-                <Route path="/success" element={<Success />} />
+            <Route path="/ignite-v2-desafio-02/" element={<DefaultLayout />}>
+                <Route path="/ignite-v2-desafio-02/" element={<Home />} />
+                <Route path="/ignite-v2-desafio-02/checkout" element={<Checkout />} />
+                <Route path="/ignite-v2-desafio-02/success" element={<Success />} />
             </Route>
         </Routes>
     );
