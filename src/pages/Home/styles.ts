@@ -6,20 +6,29 @@ interface BulletpointContainerProps {
 }
 
 export const HomeContainer = styled.main`
+    & > h2 {
+        font-size: 2rem;
+        font-weight: 800;
+        font-family: 'baloo 2';
+        color: ${props => props.theme.baseSubtitle};
+    }
+`;
+
+export const LandingPageContainer = styled.div`
     display: flex;
     align-items: center;
     flex-direction: row;
     padding: 5.75rem 0;
     gap: 3.5rem;
 
-    &>div {
+    & > div {
         height: 100%;
         display: flex;
         flex-direction: column;
         justify-content:space-between;
     }
 
-    &>img {
+    & > img {
         max-height:360px;
         max-width:476px;
         width: 100%;
@@ -52,6 +61,10 @@ export const AdvantagesContainer = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1.25rem 0;
+
+    @media (max-width: 592px) {
+        grid-template-columns: 1fr;
+        }
 `;
 
 export const BulletpointContainer = styled.span<BulletpointContainerProps>`

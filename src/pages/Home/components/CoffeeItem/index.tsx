@@ -32,7 +32,7 @@ export function CoffeeListItem({ coffee }: CoffeeListItemProps) {
             <img src={coffee.imageLink} alt="" />
             <div className="tags">
                 {coffee.tags.map((tag) =>
-                    <span>{tag.toLocaleUpperCase()}</span>)}
+                    <span key={tag} >{tag.toLocaleUpperCase()}</span>)}
             </div>
             <h1>{coffee.title}</h1>
             <h2>{coffee.description}</h2>
@@ -43,7 +43,7 @@ export function CoffeeListItem({ coffee }: CoffeeListItemProps) {
                     <span>{count}</span>
                     <Plus size={38} weight="bold" onClick={handleAdd} />
                 </div>
-                <ShoppingCart weight="fill" size={38} />
+                <ShoppingCart tabIndex={0} weight="fill" size={38} />
             </div>
         </CoffeeListItemContainer>
     );

@@ -9,19 +9,17 @@ export function CoffeeList() {
         async function fetchData() {
             const response = await fetch('https://hortigas.github.io/coffeeDeliveryAPI/coffeeList.json');
             const data = await response.json();
-            const mock = [...data, ...data, ...data, ...data, ...data];
-            setCoffeeList(mock as CoffeeItemFormat[]);
+            setCoffeeList(data as CoffeeItemFormat[]);
         };
         fetchData();
-
     }, []);
 
     return (
-        <div>
+        <>
             <h2>Nossos cafés</h2>
             <CoffeeListContainer>
                 {coffeeList.map((item) => <CoffeeListItem key={item.id} coffee={item} />)}
             </CoffeeListContainer>
-        </div>
+        </>
     );
 }

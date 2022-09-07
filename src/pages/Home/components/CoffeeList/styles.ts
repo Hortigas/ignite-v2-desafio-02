@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
 export const CoffeeListContainer = styled.div`
-    display:grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    display:flex;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 2rem;
-    margin-top: 3.375rem;
-    margin-bottom: 500px;
+    margin: 3.375rem 0;
+    width: auto;
 `;

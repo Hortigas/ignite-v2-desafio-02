@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const CoffeeListItemContainer = styled.div`
+    width:256px;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -16,7 +18,11 @@ export const CoffeeListItemContainer = styled.div`
     
     .tags {
         margin-bottom: 1rem;
-        
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.25rem;
+
         span {
             color: ${props => props.theme.yellowDark};
             background: ${props => props.theme.yellowLight};

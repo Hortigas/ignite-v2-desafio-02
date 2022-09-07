@@ -2,12 +2,12 @@ import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react';
 import { defaultTheme } from '../../styles/themes/default';
 import landingImage from './../../assets/landingImage.png';
 import { CoffeeList } from './components/CoffeeList';
-import { AdvantagesContainer, BulletpointContainer, HomeContainer, TitleContainer } from "./styles";
+import { AdvantagesContainer, BulletpointContainer, HomeContainer, LandingPageContainer, TitleContainer } from "./styles";
 
 export function Home() {
     return (
-        <div>
-            <HomeContainer>
+        <HomeContainer>
+            <LandingPageContainer>
                 <div>
                     <TitleContainer>
                         <h1>Encontre o café perfeito para qualquer hora do dia</h1>
@@ -21,8 +21,8 @@ export function Home() {
                     </AdvantagesContainer>
                 </div>
                 <img src={landingImage} alt="" />
-            </HomeContainer>
+            </LandingPageContainer>
             <CoffeeList />
-        </div>
+        </HomeContainer>
     );
 }
