@@ -1,0 +1,27 @@
+import { useEffect, useState } from "react";
+import { CoffeeItemFormat, CoffeeListItem } from "../CoffeeItem";
+import { CoffeeListContainer } from "./styles";
+
+export function CoffeeList() {
+    const [coffeeList, setCoffeeList] = useState<CoffeeItemFormat[]>([]);
+
+    useEffect(() => {
+        async function fetchData() {
+            const response = await fetch('https://hortigas.github.io/coffeeDeliveryAPI/coffeeList.json');
+            const data = await response.json();
+            const mock = [...data, ...data, ...data, ...data, ...data];
+            setCoffeeList(mock as CoffeeItemFormat[]);
+        };
+        fetchData();
+
+    }, []);
+
+    return (
+        <div>
+            <h2>Nossos cafés</h2>
+            <CoffeeListContainer>
+                {coffeeList.map((item) => <CoffeeListItem key={item.id} coffee={item} />)}
+            </CoffeeListContainer>
+        </div>
+    );
+}
