@@ -1,5 +1,4 @@
 {
-  "home": "http://hortigas.github.io/ignite-v2-desafio-02",
   "name": "02-desafio",
   "private": true,
   "version": "0.0.0",
@@ -7,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages --dist dist",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
