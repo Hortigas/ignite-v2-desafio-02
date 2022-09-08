@@ -7,10 +7,10 @@ interface ProductsProviderProps {
 
 type ProductsContextType = {
     productsCartList: ItemFormat[];
-    addItemWithQuantityToCard: (item: ItemFormat, quantity: number) => void;
+    addItemWithQuantityToCard: (item: any, quantity: number) => void;
 };
 
-interface ItemFormat {
+export interface ItemFormat {
     id: number,
     title: string,
     description: string,

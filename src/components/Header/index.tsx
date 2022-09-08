@@ -28,7 +28,7 @@ export function Header() {
                         size="22"
                         weight="fill"
                         color={hoveringLocationButton ? defaultTheme.white : defaultTheme.purple} />
-                    Belo Horizonte
+                    Belo Horizonte, MG
                 </ButtonLocationContainer>
                 <NavLink to="/ignite-v2-desafio-02/checkout">
                     <ButtonCardContainer

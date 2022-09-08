@@ -80,6 +80,7 @@ export const CoffeeListItemContainer = styled.div`
             &>svg {
                 padding: 0.65rem;
                 color: ${props => props.theme.purple};
+                cursor: pointer;
 
                 transition: color 0.1s;
                 &:hover {
@@ -98,6 +99,7 @@ export const CoffeeListItemContainer = styled.div`
             background: ${props => props.theme.purpleDark};
             padding: 0.5rem;
             border-radius: 8px;
+            cursor: pointer;
             
             transition: background 0.1s;
             &:hover {
