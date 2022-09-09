@@ -98,8 +98,40 @@ export const Button = styled.button<ButtonProps>`
 `;
 
 export const CartItensContainer = styled(BaseModelContainer)`
-    width: 448px;
     border-radius: 6px 44px;
 
-    height: 500px;
+    .subPrice {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        margin-bottom: 0.85rem;
+
+        span {
+            font-size: 0.875rem;
+        }
+    }
+
+    .totalPrice {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        margin-bottom: 1.5rem;
+
+        span {
+            color: ${props => props.theme.baseSubtitle};
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+    }
+
+    & > button {
+        padding: 0.75rem 0.5rem;
+        width: 368px;
+        border-radius: 6px;
+        border: none;
+        color: ${props => props.theme.white};
+        background: ${props => props.theme.yellow};
+    }
 `;

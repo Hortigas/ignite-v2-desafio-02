@@ -61,6 +61,7 @@ export function Checkout() {
                     <span>Total</span>
                     <span>R$ 33,20</span>
                 </div>
+                <button>CONFIRMAR PEDIDO</button>
             </CartItensContainer>
         </CheckoutContainer>
     );
