@@ -1,6 +1,7 @@
 import { MapPin, ShoppingCartSimple } from "phosphor-react";
 import { useState } from "react";
 import { NavLink } from 'react-router-dom';
+import { toast } from "react-toastify";
 import { useProductsCart } from "../../contexts/ProductsContext";
 import { defaultTheme } from "../../styles/themes/default";
 import logo from "./../../assets/logo-coffee-delivery.svg";
@@ -13,6 +14,10 @@ export function Header() {
     const { productsCartList } = useProductsCart();
 
     const totalUnitsInCart = productsCartList.reduce((previousValue, item) => previousValue + item.quantity, 0);
+
+    function handleOnClickNavCheckOut() {
+        if (totalUnitsInCart === 0) toast.warn('O carrinho está vazio!');
+    }
 
     return (
         <HeaderContainer>
@@ -30,7 +35,7 @@ export function Header() {
                         color={hoveringLocationButton ? defaultTheme.white : defaultTheme.purple} />
                     Belo Horizonte, MG
                 </ButtonLocationContainer>
-                <NavLink to="/ignite-v2-desafio-02/checkout">
+                <NavLink onClick={handleOnClickNavCheckOut} to={totalUnitsInCart === 0 ? "" : "/ignite-v2-desafio-02/checkout"}>
                     <ButtonCardContainer
                         tabIndex={-1}
                         onMouseEnter={() => setHoveringCartButton(true)}

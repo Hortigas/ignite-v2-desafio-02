@@ -1,68 +1,45 @@
-import { Bank, CreditCard, CurrencyDollar, Money } from "phosphor-react";
-import { MouseEvent, useState } from "react";
-import { defaultTheme } from "../../styles/themes/default";
-import { AddressForm } from "./components/AddressForm";
-import { CartList } from "./components/CartList";
-import { Button, CartItensContainer, CheckoutContainer, PaymentContainer } from "./styles";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { FormProvider, useForm } from 'react-hook-form';
+import * as zod from 'zod';
+import { AddressForm } from './components/AddressForm';
+import { CartItensForm } from './components/CartItensForm';
+import { PaymentForm } from './components/PaymentForm';
+import { CheckoutContainer } from './styles';
+
+const PurchaseFormValidationSchema = zod.object({
+    addressComplement: zod.string(),
+    addressNumber: zod.string().min(1, 'Campo não pode ser vazio'),
+    addressRegion: zod.string().min(1, 'Campo não pode ser vazio'),
+    city: zod.string().min(1, 'Campo não pode ser vazio'),
+    postalCode: zod.string().min(1, 'Campo não pode ser vazio').length(8, 'CEP inválido'),
+    selectedPaymentMethod: zod.string().min(1, 'Campo não pode ser vazio'),
+    state: zod.string().length(2, 'UF inválido'),
+    street: zod.string().min(1, 'Campo não pode ser vazio'),
+});
+
+type PurchaseFormData = zod.infer<typeof PurchaseFormValidationSchema>;
 
 export function Checkout() {
-    const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<string>("");
+    const PurchaseForm = useForm<PurchaseFormData>({
+        resolver: zodResolver(PurchaseFormValidationSchema),
+        shouldFocusError: true,
+    });
+    const { handleSubmit } = PurchaseForm;
 
-    function handleOnClickButtonPaymentMethor(event: MouseEvent) {
-        setSelectedPaymentMethod(event.currentTarget.id);
+
+    function handleSubmitPurchaseRequest(data: PurchaseFormData) {
+        console.log(data);
     }
 
     return (
-        <CheckoutContainer>
-            <div>
-                <AddressForm />
-                <PaymentContainer>
-                    <div className="info">
-                        <CurrencyDollar color={defaultTheme.purple} />
-                        <div>
-                            <h2>Pagamento</h2>
-                            <span>O pagamento é feito na entrega. Escolha a forma que deseja pagar</span>
-                        </div>
-                    </div>
-                    <div className="paymentMethods">
-                        <Button
-                            selected={selectedPaymentMethod === 'creditCard'}
-                            type="button"
-                            id="creditCard"
-                            onClick={handleOnClickButtonPaymentMethor}
-                        ><CreditCard />CARTÃO DE CRÉDITO</Button>
-                        <Button
-                            selected={selectedPaymentMethod === 'debitCard'}
-                            type="button"
-                            id="debitCard"
-                            onClick={handleOnClickButtonPaymentMethor}
-                        ><Bank />CARTÃO DE DÉBITO</Button>
-                        <Button
-                            selected={selectedPaymentMethod === 'money'}
-                            type="button"
-                            id="money"
-                            onClick={handleOnClickButtonPaymentMethor}
-                        ><Money />DINHEIRO</Button>
-                    </div>
-                </PaymentContainer>
-            </div>
-            <CartItensContainer>
-                <b>Cafés selecionados</b>
-                <CartList />
-                <div className="subPrice">
-                    <span>total de itens</span>
-                    <span>R$ 29,70</span>
+        <CheckoutContainer onSubmit={handleSubmit(handleSubmitPurchaseRequest)} action="">
+            <FormProvider {...PurchaseForm}>
+                <div>
+                    <AddressForm />
+                    <PaymentForm />
                 </div>
-                <div className="subPrice">
-                    <span>Entrega</span>
-                    <span>R$ 3,50</span>
-                </div>
-                <div className="totalPrice">
-                    <span>Total</span>
-                    <span>R$ 33,20</span>
-                </div>
-                <button>CONFIRMAR PEDIDO</button>
-            </CartItensContainer>
+            </FormProvider>
+            <CartItensForm />
         </CheckoutContainer>
     );
 }

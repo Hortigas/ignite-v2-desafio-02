@@ -7,14 +7,19 @@ interface CartItemProps {
 }
 
 export function CartItem({ item }: CartItemProps) {
-    const { } = useProductsCart();
+    const { updateItemInCart, deleteItemInCart } = useProductsCart();
 
     function handleSubtract() {
-
+        if (item.quantity > 1)
+            updateItemInCart(item.id, -1);
     }
 
     function handleAdd() {
+        updateItemInCart(item.id, 1);
+    }
 
+    function handleDeleteItem() {
+        deleteItemInCart(item.id);
     }
 
     return (
@@ -24,14 +29,14 @@ export function CartItem({ item }: CartItemProps) {
                 <h3>{item.title}</h3>
                 <div className="buttons">
                     <div className="counter">
-                        <Minus size={32} weight="bold" onClick={handleSubtract} />
+                        <Minus tabIndex={0} size={32} weight="bold" onClick={handleSubtract} />
                         <span>{item.quantity}</span>
-                        <Plus size={32} weight="bold" onClick={handleAdd} />
+                        <Plus tabIndex={0} size={32} weight="bold" onClick={handleAdd} />
                     </div>
-                    <button><Trash size={32} /> REMOVER</button>
+                    <button onClick={handleDeleteItem} ><Trash size={32} /> REMOVER</button>
                 </div>
             </div>
-            <span>R$ {item.price}</span>
+            <span>R$ {(item.price * item.quantity).toFixed(2).replace('.', ',')}</span>
         </CartItemContainer>
     );
 }

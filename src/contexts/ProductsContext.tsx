@@ -1,5 +1,5 @@
-import { createContext, ReactNode, useContext, useState } from "react";
-import { toast } from "react-toastify";
+import { createContext, ReactNode, useContext, useState } from 'react';
+import { toast } from 'react-toastify';
 
 interface ProductsProviderProps {
     children: ReactNode;
@@ -8,30 +8,44 @@ interface ProductsProviderProps {
 type ProductsContextType = {
     productsCartList: ItemFormat[];
     addItemWithQuantityToCard: (item: any, quantity: number) => void;
+    updateItemInCart: (itemId: number, quantity: number) => void;
+    deleteItemInCart: (itemId: number) => void;
 };
 
 export interface ItemFormat {
-    id: number,
-    title: string,
-    description: string,
-    price: number,
-    imageLink: string,
-    tags: string[],
+    id: number;
+    title: string;
+    description: string;
+    price: number;
+    imageLink: string;
+    tags: string[];
     quantity: number;
-};
+}
+
+type ItemFormatWithoutQuantity = Omit<ItemFormat, 'quantity'>;
 
 const ProductsContext = createContext<ProductsContextType>({} as ProductsContextType);
 
 export function ProductsProvider({ children }: ProductsProviderProps) {
     const [productsCartList, setProductsCartList] = useState<ItemFormat[]>([]);
 
-    function addItemWithQuantityToCard(newItem: any, quantity: number) {
+    function addItemWithQuantityToCard(newItem: ItemFormatWithoutQuantity, quantity: number) {
         const cartItem = { ...newItem, quantity } as ItemFormat;
-        _hasItemInCart(newItem) ? _updateItemInCart(cartItem) : _addItemToCart(cartItem);
+        _hasItemInCart(cartItem) ? updateItemInCart(cartItem.id, cartItem.quantity) : _addItemToCart(cartItem);
+        _notifyItemAddedToCart(cartItem);
+    }
+
+    function _notifyItemAddedToCart(cartItem: ItemFormat) {
         toast.success(
-            cartItem.quantity === 1 ?
-                <span>{cartItem.quantity} <b>{cartItem.title}</b> foi adicionado ao carrinho</span> :
-                <span>{cartItem.quantity} <b>{cartItem.title}</b> foram adicionados ao carrinho</span>
+            cartItem.quantity === 1 ? (
+                <span>
+                    {cartItem.quantity} <b>{cartItem.title}</b> foi adicionado ao carrinho
+                </span>
+            ) : (
+                <span>
+                    {cartItem.quantity} <b>{cartItem.title}</b> foram adicionados ao carrinho
+                </span>
+            )
         );
     }
 
@@ -39,13 +53,10 @@ export function ProductsProvider({ children }: ProductsProviderProps) {
         return productsCartList.some((cartItem) => cartItem.id === newItem.id);
     }
 
-    function _updateItemInCart(newItem: ItemFormat) {
+    function updateItemInCart(itemId: number, quantity: number) {
         const updatedCartList = productsCartList.map((cartItem) => {
-            if (cartItem.id === newItem.id)
-                return { ...cartItem, quantity: cartItem.quantity + newItem.quantity };
-            else
-                return cartItem;
-
+            if (cartItem.id === itemId) return { ...cartItem, quantity: cartItem.quantity + quantity };
+            else return cartItem;
         });
         setProductsCartList(updatedCartList);
     }
@@ -54,11 +65,12 @@ export function ProductsProvider({ children }: ProductsProviderProps) {
         setProductsCartList((state) => [...state, newItem]);
     }
 
-    return (
-        <ProductsContext.Provider value={{ productsCartList, addItemWithQuantityToCard }}>
-            {children}
-        </ProductsContext.Provider>
-    );
+    function deleteItemInCart(itemId: number) {
+        const updatedCartList = productsCartList.filter((cartItem) => cartItem.id !== itemId);
+        setProductsCartList(updatedCartList);
+    }
+
+    return <ProductsContext.Provider value={{ productsCartList, addItemWithQuantityToCard, updateItemInCart, deleteItemInCart }}>{children}</ProductsContext.Provider>;
 }
 
 export function useProductsCart(): ProductsContextType {

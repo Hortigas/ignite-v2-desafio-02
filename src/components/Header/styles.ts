@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const HeaderContainer = styled.header`
     display: flex;
@@ -10,7 +10,7 @@ export const HeaderContainer = styled.header`
     nav {
         display: flex;
         align-items: center;
-        justify-content:center;
+        justify-content: center;
         gap: 0.75rem;
 
         a {
@@ -23,7 +23,7 @@ export const ButtonBaseContainer = styled.button`
     padding: 0.5rem;
     display: flex;
     align-items: center;
-    justify-content:center;
+    justify-content: center;
     border-radius: 6px;
     text-decoration: none;
     border: none;
@@ -31,13 +31,13 @@ export const ButtonBaseContainer = styled.button`
 `;
 
 export const ButtonLocationContainer = styled(ButtonBaseContainer)`
-    background: ${props => props.theme.purpleLight};
-    color: ${props => props.theme.purpleDark};
+    background: ${(props) => props.theme.purpleLight};
+    color: ${(props) => props.theme.purpleDark};
 
     transition: background 0.1s;
     &:hover {
-        color: ${props => props.theme.white};
-        background: ${props => props.theme.purple};
+        color: ${(props) => props.theme.white};
+        background: ${(props) => props.theme.purple};
     }
 
     & > svg {
@@ -46,12 +46,12 @@ export const ButtonLocationContainer = styled(ButtonBaseContainer)`
 `;
 
 export const ButtonCardContainer = styled(ButtonBaseContainer)`
-    background: ${props => props.theme.yellowLight};
+    background: ${(props) => props.theme.yellowLight};
     position: relative;
 
     transition: background 0.1s;
     &:hover {
-        background: ${props => props.theme.yellowDark};
+        background: ${(props) => props.theme.yellowDark};
     }
 
     span {
@@ -60,13 +60,13 @@ export const ButtonCardContainer = styled(ButtonBaseContainer)`
         height: 1.25rem;
         right: -0.625rem;
         width: 1.25rem;
-        
+
         font-size: 0.75rem;
-        background: ${props => props.theme.yellowDark};
-        color: ${props => props.theme.white};
-        border-radius:50%;
+        background: ${(props) => props.theme.yellowDark};
+        color: ${(props) => props.theme.white};
+        border-radius: 50%;
         display: flex;
         align-items: center;
-        justify-content:center;
+        justify-content: center;
     }
 `;

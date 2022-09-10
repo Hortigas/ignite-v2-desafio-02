@@ -45,9 +45,9 @@ export function CoffeeListItem({ coffee }: CoffeeListItemProps) {
             <div className="buyArea">
                 <span>{coffee.price}</span>
                 <div className="counter">
-                    <Minus size={38} weight="bold" onClick={handleSubtract} />
+                    <Minus tabIndex={0} size={38} weight="bold" onClick={handleSubtract} />
                     <span>{count}</span>
-                    <Plus size={38} weight="bold" onClick={handleAdd} />
+                    <Plus tabIndex={0} size={38} weight="bold" onClick={handleAdd} />
                 </div>
                 <ShoppingCart tabIndex={0} weight="fill" size={38} onClick={handleAddToCart} />
             </div>

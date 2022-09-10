@@ -1,5 +1,6 @@
 export const defaultTheme = {
     white: '#fff',
+    red: '#b33a3a',
     background: '#fafafa',
     baseCard: '#f3f2f2',
     baseInput: '#ededed',
