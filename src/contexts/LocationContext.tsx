@@ -32,15 +32,18 @@ export function LocationProvider({ children }: LocationProviderProps) {
             if (!!storedStateAsJSON) {
                 setLocation(JSON.parse(storedStateAsJSON));
             } else {
-                const response = await fetch('https://ipinfo.io/json');
-                if (response.status === 200) {
-                    const newLocation = await response.json();
-                    setLocation(newLocation);
-                    localStorage.setItem('@CoffeeDelivery:Location-1.0.1', JSON.stringify(newLocation));
-                } else {
-                    const error = await response.json();
-                    console.log(error);
-                }
+                fetchLocation();
+            }
+        }
+        async function fetchLocation() {
+            const response = await fetch('https://ipinfo.io/json');
+            if (response.status === 200) {
+                const newLocation = await response.json();
+                setLocation(newLocation);
+                localStorage.setItem('@CoffeeDelivery:Location-1.0.1', JSON.stringify(newLocation));
+            } else {
+                const error = await response.json();
+                console.log(error);
             }
         }
         getLocationBasedOnIp();
