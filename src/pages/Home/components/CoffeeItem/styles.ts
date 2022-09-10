@@ -99,6 +99,8 @@ export const CoffeeListItemContainer = styled.div`
             & > span {
                 font-size: 1rem;
                 padding: 0.5rem 0;
+                min-width: 1.125rem;
+                text-align: center;
             }
         }
 

@@ -16,7 +16,6 @@ export function PaymentForm() {
         setValue("selectedPaymentMethod", selected);
     }
 
-
     return (
         <PaymentContainer>
             <div className="info">

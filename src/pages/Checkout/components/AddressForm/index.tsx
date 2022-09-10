@@ -48,6 +48,7 @@ export function AddressForm() {
                         type="number"
                         {...register("addressComplement", { required: true })}
                     />
+                    <i>Opcional</i>
                     <span>{(errors.addressComplement?.message) as string || ""}</span>
 
                 </div>

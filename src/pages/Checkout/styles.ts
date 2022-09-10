@@ -5,7 +5,6 @@ export const CheckoutContainer = styled.form`
     justify-content: center;
     align-items: flex-start;
     gap: 2rem;
-
     margin-top: 4.875rem;
 
     @media (max-width: 1125px) {
@@ -32,6 +31,10 @@ export const BaseModelContainer = styled.div`
     border-radius: 6px;
 
     position: relative;
+
+    @media (max-width: 656px) {
+        padding: 1.5rem;
+    }
 
     & > b {
         color: ${(props) => props.theme.baseSubtitle};
@@ -62,6 +65,38 @@ export const BaseModelContainer = styled.div`
             display: inline-block;
             font-size: 0.875rem;
             margin-bottom: 2rem;
+        }
+    }
+`;
+
+export const EmptyCartContainer = styled.form`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 6.75rem);
+
+    h1 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Baloo 2';
+        font-weight: 800;
+        font-size: 2rem;
+        margin-top: -6.75rem;
+
+        @media (max-width: 656px) {
+            font-size: 1.5rem;
+        }
+
+        svg {
+            margin-right: 1rem;
+            height: 64px;
+            width: 64px;
+
+            @media (max-width: 656px) {
+                height: 48px;
+                width: 48px;
+            }
         }
     }
 `;

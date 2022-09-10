@@ -25,6 +25,8 @@ export const CartItemContainer = styled.div`
         font-weight: bold;
         color: ${(props) => props.theme.baseText};
         margin-left: 3.125rem;
+        min-width: 80px;
+        text-align: right;
 
         @media (max-width: 656px) {
             margin-left: 0;
@@ -83,6 +85,8 @@ export const CartItemContainer = styled.div`
                 & > span {
                     font-size: 1rem;
                     padding: 0.5rem 0;
+                    min-width: 1.125rem;
+                    text-align: center;
                 }
             }
 
