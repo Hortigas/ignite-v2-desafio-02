@@ -28,15 +28,18 @@ export function LocationProvider({ children }: LocationProviderProps) {
 
     useEffect(() => {
         async function getLocationBasedOnIp() {
-            const storedStateAsJSON = localStorage.getItem('@CoffeeDelivery:Location-1.0.0');
+            const storedStateAsJSON = localStorage.getItem('@CoffeeDelivery:Location-1.0.1');
             if (!!storedStateAsJSON) {
                 setLocation(JSON.parse(storedStateAsJSON));
             } else {
-                const response = await fetch('http://ipinfo.io/json');
-                if (response.status == 200) {
+                const response = await fetch('https://ipinfo.io/json');
+                if (response.status === 200) {
                     const newLocation = await response.json();
                     setLocation(newLocation);
-                    localStorage.setItem('@CoffeeDelivery:Location-1.0.0', JSON.stringify(newLocation));
+                    localStorage.setItem('@CoffeeDelivery:Location-1.0.1', JSON.stringify(newLocation));
+                } else {
+                    const error = await response.json();
+                    console.log(error);
                 }
             }
         }
