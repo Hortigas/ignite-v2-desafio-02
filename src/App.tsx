@@ -1,21 +1,24 @@
 import { BrowserRouter } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ThemeProvider } from 'styled-components';
-import { ProductsProvider } from './contexts/ProductsContext';
 import { Router } from './Router';
 import { defaultTheme } from './styles/themes/default';
 import { GlobalStyle } from './styles/themes/global';
 
-import { toast, ToastContainer } from 'react-toastify';
+import { LocationProvider } from './contexts/LocationContext';
+import { ProductsProvider } from './contexts/ProductsContext';
 
 export function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
-      <ProductsProvider>
-        <BrowserRouter>
-          <Router />
-        </BrowserRouter>
-      </ProductsProvider>
+      <LocationProvider>
+        <ProductsProvider>
+          <BrowserRouter>
+            <Router />
+          </BrowserRouter>
+        </ProductsProvider>
+      </LocationProvider>
       <ToastContainer position='top-center' />
       <GlobalStyle />
     </ThemeProvider>

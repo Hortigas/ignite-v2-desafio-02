@@ -57,7 +57,7 @@ export const CoffeeListItemContainer = styled.div`
         flex-direction: row;
 
         & > span {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-family: 'baloo 2';
             color: ${(props) => props.theme.baseText};
 

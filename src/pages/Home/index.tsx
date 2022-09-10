@@ -5,8 +5,6 @@ import { CoffeeList } from './components/CoffeeList';
 import { AdvantagesContainer, BulletpointContainer, HomeContainer, LandingPageContainer, TitleContainer } from "./styles";
 
 export function Home() {
-    //navigator.geolocation.getCurrentPosition((location) => { console.log(location.coords); });
-
     return (
         <HomeContainer>
             <LandingPageContainer>
