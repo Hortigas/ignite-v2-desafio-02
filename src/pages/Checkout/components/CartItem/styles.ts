@@ -30,6 +30,8 @@ export const CartItemContainer = styled.div`
 
         @media (max-width: 656px) {
             margin-left: 0;
+            text-align: center;
+            font-size: 1.25rem;
         }
     }
 
