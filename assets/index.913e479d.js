@@ -310,6 +310,8 @@ Error generating stack: `+o.message+`
 
         @media (max-width: 656px) {
             margin-left: 0;
+            text-align: center;
+            font-size: 1.25rem;
         }
     }
 
